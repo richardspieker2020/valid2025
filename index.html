@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Email Validator</title>
+</head>
+<body>
+  <h2>Email Existence Check</h2>
+  <input type="text" id="email" placeholder="Enter email">
+  <button onclick="checkEmail()">Check</button>
+  <pre id="result"></pre>
+
+  <script>
+    async function checkEmail() {
+      const email = document.getElementById("email").value;
+      document.getElementById("result").innerText = "Checking...";
+      const response = await fetch("check_email.php?email=" + encodeURIComponent(email));
+      const data = await response.text();
+      document.getElementById("result").innerText = data;
+    }
+  </script>
+</body>
+</html>
